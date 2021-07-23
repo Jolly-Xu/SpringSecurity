@@ -1,0 +1,10 @@
+spring:
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+
+  redis:
+    host: 39.101.178.126
+    port: 6379
+    password: xujialin123
+    database: 0

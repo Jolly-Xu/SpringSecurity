@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            padding: 0;
+            margin: 0;
+            box-sizing: border-box;
+        }
+
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+        }
+
+        #root {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            background-image: url("img/bk3.png");
+            background-repeat: initial;
+            background-size: 100% 100%;
+
+        }
+
+        .login {
+            width: 330px;
+            height: 400px;
+            background-color: rgba(117, 59, 59, 0.3);
+            position: absolute;
+            right: 100px;
+            transform: translateY(40%);
+            border-radius: 15px;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+        }
+
+        .inp {
+            font-size: 14px;
+            outline: none;
+            background-color: rgba(184, 69, 69, 0.5);
+            width: 300px;
+            height: 45px;
+            margin-top: 20px;
+            color: rgb(0, 0, 0);
+            border-radius: 15px;
+            padding: 10px;
+            border: none;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+        }
+
+        .sub {
+            width: 150px;
+            height: 40px;
+            position: absolute;
+            display: block;
+            left: 50%;
+            transform: translateX(-75px);
+            font-size: 20px;
+            border-radius: 15px;
+            background-color: rgba(184, 69, 69, 0.5);
+            color: rgb(46, 46, 46);
+            border: none;
+            box-shadow: 0 5px 10px rgba(0, 0, 0, 0.25);
+            margin-top: 80px;
+            letter-spacing: 10px;
+        }
+
+
+        .box {
+            position: relative;
+            margin-left: 5%;
+            margin-top: 3%;
+
+        }
+
+        p {
+            margin-top: 20%;
+            font-size: 25px;
+            text-align: center;
+            color: rgb(46, 46, 46);
+        }
+
+        input::placeholder {
+            color: rgb(46, 46, 46);
+            font-size: 14px;
+        }
+
+        .showpwd {
+            position: absolute;
+            height: 16px;
+            width: 20px;
+            background-image: url(img/闭眼.png);
+            background-size: 20px 16px;
+            right: 10%;
+            bottom: 10%;
+        }
+
+        .inp-change{
+            border: rgb(253, 90, 90) 2px solid;
+        }
+
+        .sub:hover{
+            border: rgb(253, 90, 90) 2px solid;
+        }
+
+        .ckb{
+            position: absolute;
+            height: 14px;
+            width: 14px;
+            margin-top: 25px;
+            margin-left: 5px;
+            background-color:transparent;
+        }
+        span{
+            position: absolute;
+            margin-top: 22px;
+            font-size: 14px;
+        }
+        .freelogin{
+            margin-left: 20px;
+        }
+        .forget{
+            right: 10px;
+        }
+
+        .forget a{
+            text-decoration: none;
+            color: black;
+        }
+        .forget a:hover{
+            color: rgb(57, 57, 143);
+        }
+    </style>
+
+
+
+</head>
+
+<body>
+<div id="root">
+    <div class="login">
+
+        <p>Login</p>
+        <div class="box">
+            <form action="/login" method="post">
+                <input type="text" placeholder="请输入账号" name="username" class="inp">
+
+                <input id="pwd" type="password" class="inp" name="password" placeholder="请输入密码">
+                <br>
+                <div class="showpwd" onclick="showpwd()" id="cg"></div>
+
+
+                <input type="checkbox" name="remember-me" id="remember-me" class="ckb"><span class="freelogin">14天免密登录</span>
+                <span class="forget"><a href="">忘记密码？</a></span>
+
+                <input type="submit" name="" id="" class="sub" value="登录">
+            </form>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    var flag = false;
+
+
+
+    function showpwd() {
+        flag = !flag;
+        let b = document.getElementById("cg");
+        let p = document.getElementById("pwd");
+        if (flag) {
+            b.style.backgroundImage = "url('img/睁眼.png')";
+            p.type = 'text';
+        }
+        else {
+            b.style.backgroundImage = "url('img/闭眼.png')";
+            p.type = 'password';
+        }
+
+
+
+    }
+    let inp = document.getElementsByClassName("inp");
+    console.log(inp);
+    for (let index = 0; index < inp.length; index++) {
+        inp[index].onfocus=function(){
+            inp[index].classList.add("inp-change")
+        }
+        inp[index].onblur=function(){
+            if(this.classList.contains("inp-change"))
+                console.log("1");
+            inp[index].classList.remove("inp-change");
+        }
+    }
+</script>
+
+</body>
+
+</html>
